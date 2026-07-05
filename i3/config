@@ -188,6 +188,18 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+
+# Full screen screenshot
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/screenshot-$(date -u +'%Y%m%d-%H%M%SZ')-all.png"
+
+# Area selection screenshot
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/screenshot-$(date -u +'%Y%m%d-%H%M%SZ')-selected.png"
+
+# Clipboard screenshot
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+
+
+
 #bar {
-#       # status_command i3status
+#       status_command i3status
 #}
