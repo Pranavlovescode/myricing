@@ -52,4 +52,16 @@ install -m 644 "$SCRIPT_DIR/i3/config" "$CONFIG_HOME/i3/config"
 install -m 644 "$SCRIPT_DIR/polybar/config.ini" "$CONFIG_HOME/polybar/config.ini"
 install -m 755 "$SCRIPT_DIR/polybar/launch.sh" "$CONFIG_HOME/polybar/launch.sh"
 
+# now adding tap to click feature to the touchpad in i3wm
+sudo  tee /etc/X11/xorg.conf.d/30-touchpad.conf >/dev/null <<EOL
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "Tapping" "on"
+EndSection
+EOL
+
+echo "i3 and polybar configuration files have been installed to $CONFIG_HOME. Tap to click has been enabled for the touchpad."
+
 echo "Done. Log out and start an i3 session to use the new configuration."
